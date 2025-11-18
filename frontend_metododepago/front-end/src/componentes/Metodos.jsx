@@ -32,6 +32,16 @@ function Metodos(){
     });
     }
 
+    async function eliminarMetodo(id) {
+        await fetch(`http://localhost:3000/api/metodos/${id}`,{
+            method: "DELETE",
+            headers:{
+                "Content-Type":"application/json"
+            }
+        });
+        traermetododepago();
+    }
+
 return(
     <div>
         <h2>Crear Metodoa</h2>
@@ -47,9 +57,6 @@ return(
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Detalles</th>
-                    <td>
-                        <button onClick={()eliminarMetodo=>(a.id)}></button>
-                    </td>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +65,9 @@ return(
                         <td>{a.id}</td>
                         <td>{a.nombre}</td>
                         <td>{a.detalles}</td>
+                        <td>
+                            <button onClick={()eliminarMetodo=>(a.id)}></button>
+                        </td>
                     </tr>
                 ))}
             </tbody>
