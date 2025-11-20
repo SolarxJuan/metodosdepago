@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './Metodos.css';
 
 function Metodos(){
 
@@ -30,6 +31,7 @@ function Metodos(){
         },
         body: JSON.stringify({ detalles, nombre })
     });
+    traermetododepago();
     }
 
     async function eliminarMetodo(id) {
@@ -44,7 +46,7 @@ function Metodos(){
 
 return(
     <div>
-        <h2>Crear Metodoa</h2>
+        <h2>Crear Metodos</h2>
         <form onSubmit={guardarMethod}>    
             <input type="text" placeholder="Detalles" onChange={(event)=>setdetalles(event.target.value)}/>
             <input type="text" placeholder="Nombre" onChange={(event)=>setNombre(event.target.value)}/>
@@ -57,6 +59,7 @@ return(
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Detalles</th>
+                    <th>Botones:D</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,7 +69,7 @@ return(
                         <td>{a.nombre}</td>
                         <td>{a.detalles}</td>
                         <td>
-                            <button onClick={()eliminarMetodo=>(a.id)}></button>
+                            <button onClick={()=>eliminarMetodo(a.id)}>eliminar</button>
                         </td>
                     </tr>
                 ))}
